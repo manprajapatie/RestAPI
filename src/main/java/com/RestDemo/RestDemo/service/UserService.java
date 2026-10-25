@@ -16,7 +16,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<UserDto> getAllUsers(){
+    public void deleteUserById(String id) {
+        userRepository.deleteUserById(id);
+    }
+
+    public List<UserDto> getAllUsers() {
         return this.userRepository.findAll();
     }
 
@@ -29,7 +33,7 @@ public class UserService {
     }
 
     public UserDto updateUser(CreateUserDto updateUserDto, String id) {
-        if(userRepository.findUserById(id) == null){
+        if (userRepository.findUserById(id) == null) {
             return null;
         }
         return userRepository.update(updateUserDto, id);
